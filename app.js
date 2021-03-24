@@ -13,7 +13,7 @@ const  db  = require('./models/index');
   try{
     await db.sequelize.authenticate();
     console.log('Connection to the database successful!');
-    await db.sequelize.sync({force: true});
+    await db.sequelize.sync({force: false});
   } catch(err) {
     console.log('error loading db: ' + err.message)
   }
