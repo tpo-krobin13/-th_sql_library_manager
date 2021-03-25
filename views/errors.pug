@@ -3,9 +3,10 @@ extends layout
 block content
   p
     a.button(href='/books') Back to the Book Listing
-  if(error)
+  if(errors)
     h1.error Oops an error occurred!
     ul.error
+      each error in errors
         li=error.status
         li=error.message
         li Please try again later
