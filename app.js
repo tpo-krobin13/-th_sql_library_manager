@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
   if(res.statusCode == '404'){
     res.render('page-not-found', {title: "404 Page Not Found", error: err});
   } else {
-    res.render('errors', {title: "Server Error", error: err});
+    res.render('errors', {title: "Server Error", errors: err});
   }
 });
 
