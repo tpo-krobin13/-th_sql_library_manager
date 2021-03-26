@@ -1,6 +1,9 @@
 extends layout
 
 block content
+  p
+    a.button(href='/books') Back to the Book Listing
+    
   h1= "Server Error"
   h2= error.message
   h3= error.status

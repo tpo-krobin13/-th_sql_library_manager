@@ -58,12 +58,13 @@ app.use(function(err, req, res, next) {
     err.message = 'Internal Server Error';
   }
 
-  console.log('---------------- logging Global Error: ' + err.status, err.message, err.stack)
+  console.log('---------------- logging Global Error: ');
+  console.dir(err);
   res.status(err.status || 500);
   if(res.statusCode == '404'){
     res.render('page-not-found', {title: "404 Page Not Found", error: err});
   } else {
-    res.render('errors', {title: "Server Error", errors: err});
+    res.render('error', {title: "Server Error", error: err});
   }
 });
 

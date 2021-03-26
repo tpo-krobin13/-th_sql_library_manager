@@ -33,17 +33,15 @@ router.post('/new', asyncHandler(
   } catch(err) {
     if(err.name === "SequelizeValidationError") { // checking the error
       res.render("new-book", { book, errors: err.errors})
-
     } else {
       throw err;
-      next(err);
     } 
   }
 }));
 
 router.get('/error/500', asyncHandler((req, res, next) => {
-  const internalServerError = new Error('500 Internal Server Error');
-  next(internalServerError);
+  let serverErr = new Error('500 Internal Server Error');
+  throw(serverErr);
 }));
 
 /* GET display book detail form */
@@ -104,7 +102,8 @@ function asyncHandler(cb){
       await cb(req, res, next);
     } catch(error){
       console.log('There was a problem fulfilling the book route');
-      throw(error);
+      console.dir(error);
+      next(error);
     }
   }
 }
